@@ -1,51 +1,181 @@
-# Vendly Commerce — portfólio técnico
+# Vendly Commerce | Plataforma SaaS de Gestão Comercial
 
-Projeto independente de plataforma SaaS para gestão comercial, com módulos de pedidos, produtos, estoque, assinaturas e integrações. Esta é uma **cópia pública de demonstração/estudo**, separada da implantação de produção.
+<p align="center">
+  <strong>Projeto Full Stack • Portfólio de Engenharia de Software</strong><br>
+  Uma aplicação de gestão comercial desenvolvida para aplicar, na prática, conceitos de arquitetura, APIs, autenticação e regras de negócio.
+</p>
 
-## Stack
+<p align="center">
+  <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-ES%20Modules-F7DF1E?logo=javascript&logoColor=black">
+  <img alt="Node.js" src="https://img.shields.io/badge/Node.js-Backend-339933?logo=node.js&logoColor=white">
+  <img alt="Express" src="https://img.shields.io/badge/Express-API-222222?logo=express&logoColor=white">
+  <img alt="Firebase" src="https://img.shields.io/badge/Firebase-Firestore-FFCA28?logo=firebase&logoColor=black">
+  <img alt="Socket.IO" src="https://img.shields.io/badge/Socket.IO-Tempo%20real-010101?logo=socket.io&logoColor=white">
+</p>
 
-- Front-end: HTML, CSS e JavaScript (com módulos ES).
-- Back-end: Node.js, Express, Socket.IO.
-- Dados/autenticação: Firebase/Firestore; suporte a emuladores locais.
-- Testes: Node.js Test Runner e testes de integração via Firebase Emulator.
+> **Sobre esta versão:** repositório destinado a **portfólio e estudo**, independente do sistema de produção. As configurações públicas apontam para serviços locais de demonstração. Não há instância comercial pública incluída neste repositório.
 
-## Configuração segura para desenvolvimento
+## Visão geral
 
-1. Instale Node.js compatível com as dependências e o Firebase CLI (`cd backend && npm ci`).
-2. Use **somente** o Firebase Emulator com o projeto fictício `vendly-local`. Veja `backend/.env.local.example` para criar seu próprio `backend/.env.local` (não versionado).
-3. Inicie os emuladores em um terminal: `cd backend && npm run emulator`.
-4. Em outro terminal: `cd backend && npm run dev:local`. Configure o seed local com `LOCAL_ADMIN_PASSWORD` e `LOCAL_SUPERADMIN_PASSWORD` em seu arquivo privado, se necessário.
-5. Sirva a pasta raiz do repositório com um servidor HTTP estático (por exemplo, a extensão Live Server na porta 5500). Abra `frontend/html/login.html`. **Não abra por `file://`.**
+O **Vendly Commerce** é um projeto independente de software para apoiar operações de pequenos estabelecimentos: cadastro de produtos, gestão de pedidos, acompanhamento de estoque, visualização de vendas e módulos de assinatura. Seu desenvolvimento envolve tanto a interface utilizada pelo estabelecimento quanto a API responsável pela lógica de negócio e integração dos componentes.
 
-O arquivo `frontend/js/public-config.js` define o back-end de demonstração, com padrão `http://127.0.0.1:3000`. Altere **apenas para um back-end isolado de demonstração, sob seu controle**. Não inclua endereços, tokens ou credenciais da instância comercial de produção.
+O objetivo ao publicar o código é demonstrar **experiência prática em desenvolvimento de software**, organização de um projeto Full Stack e investigação de problemas que surgem ao construir uma aplicação além de exercícios isolados.
 
-**Importante:** publicar arquivos estáticos no GitHub Pages não hospeda o servidor Node.js, Socket.IO nem os serviços Firebase. Sem um backend demonstrativo separado, as operações autenticadas não funcionarão publicamente. Os emuladores e suas credenciais de teste **não devem ser expostos na internet**.
+## Prévia do sistema
 
-## Testes
+### Painel de pedidos
+
+![Tela de pedidos do Vendly Commerce](docs/images/pedidos.png)
+
+Gerenciamento de pedidos com estados de atendimento, informações de itens e acompanhamento operacional. Identificadores e nomes de clientes foram ocultados na imagem.
+
+### Dashboard
+
+![Dashboard do Vendly Commerce com indicadores e gráficos](docs/images/dashboard.png)
+
+Visão geral das vendas, produtos mais vendidos e situação do estoque.
+
+### Faturamento
+
+![Tela de faturamento do Vendly Commerce](docs/images/faturamento.png)
+
+Acompanhamento de valores por período e distribuição por forma de pagamento.
+
+### Login e acesso ao painel
+
+![Tela de login do Vendly Commerce](docs/images/login.png)
+
+Interface de acesso à área administrativa.
+
+<sub>As capturas ilustram o projeto em ambiente de desenvolvimento/testes e não representam indicadores comerciais auditados.</sub>
+
+## Funcionalidades e desafios técnicos
+
+| Área                                  | Implementação / aprendizado                                                                  |
+| ------------------------------------- | -------------------------------------------------------------------------------------------- |
+| **Pedidos**                           | Fluxo de acompanhamento e mudança de status; atualizações em tempo real com Socket.IO.       |
+| **Produtos e estoque**                | Cadastro e acompanhamento de itens; regras de reserva de estoque para pedidos.               |
+| **Dashboard e faturamento**           | Consolidação de informações para indicadores, gráficos e distribuição de pagamentos.         |
+| **Autenticação e acesso**             | Autenticação de usuários e verificações de autorização em rotas do backend.                  |
+| **Isolamento entre estabelecimentos** | Separação lógica de dados por estabelecimento (arquitetura multi-tenant).                    |
+| **Pagamentos e assinaturas**          | Código de integração com provedores externos, webhooks e rotinas relacionadas a assinaturas. |
+| **Qualidade**                         | Testes automatizados para regras de negócio, fluxos e cenários com emuladores.               |
+
+### Aprendizados de engenharia de software
+
+- Estruturar funcionalidades entre **front-end, API e persistência**, mantendo responsabilidades claras.
+- Entender os cuidados de **autenticação, autorização e isolamento de dados** em aplicações multi-tenant.
+- Tratar operações sensíveis como pagamentos, atualizações de pedidos e reserva de estoque como **regras de negócio**, e não apenas alterações visuais na interface.
+- Investigar falhas, criar testes e evoluir o projeto com **Git e GitHub**.
+- Separar configuração de **desenvolvimento** e **produção**, evitando dependências acidentais de serviços reais na cópia de portfólio.
+
+## Tecnologias
+
+| Camada                        | Tecnologias presentes no repositório                                          |
+| ----------------------------- | ----------------------------------------------------------------------------- |
+| **Interface**                 | HTML5, CSS3, JavaScript e módulos ES                                          |
+| **Servidor/API**              | Node.js, Express                                                              |
+| **Tempo real**                | Socket.IO                                                                     |
+| **Persistência/autenticação** | Firebase Admin SDK, Firestore, Firebase Authentication e emuladores locais    |
+| **Integrações**               | Mercado Pago e Cloudinary (código de integração; exigem configuração própria) |
+| **Testes**                    | Node.js Test Runner e testes de integração com Firebase Emulator              |
+| **Ferramentas**               | Git, GitHub, npm                                                              |
+
+> O front-end desta cópia utiliza **HTML, CSS e JavaScript**; não é um projeto React/Next.js. As tecnologias acima correspondem aos arquivos desta versão pública.
+
+## Organização do repositório
+
+```text
+vendly-commerce/
+├── backend/
+│   ├── config/           # Configurações de serviços
+│   ├── database/         # Acesso a dados
+│   ├── jobs/             # Tarefas programadas
+│   ├── scripts/          # Utilitários para desenvolvimento e testes
+│   ├── test/             # Testes automatizados e de integração
+│   ├── utils/            # Regras e funções auxiliares
+│   ├── server.js         # Servidor HTTP
+│   └── package.json
+├── frontend/
+│   ├── assets/           # Ícones e recursos da interface
+│   ├── css/              # Estilos e componentes visuais
+│   ├── html/             # Páginas
+│   └── js/               # Módulos e lógica do navegador
+├── docs/
+│   └── images/           # Capturas usadas neste README
+└── README.md
+```
+
+## Como executar localmente
+
+**Pré-requisitos:** Node.js e npm; Java é necessário para o emulador do Firestore. Utilize os **emuladores locais do Firebase**, sem conectar esta versão a um projeto Firebase de produção.
+
+**1. Instale as dependências do servidor**
 
 ```bash
 cd backend
+npm ci
+```
+
+**2. Crie a configuração local**
+
+Copie `backend/.env.local.example` para `backend/.env.local` e preencha as senhas de teste locais (`LOCAL_ADMIN_PASSWORD` e `LOCAL_SUPERADMIN_PASSWORD`) com pelo menos 12 caracteres. Mantenha esse arquivo fora do Git.
+
+**3. Inicie os emuladores (terminal 1)**
+
+```bash
+cd backend
+npm run emulator
+```
+
+**4. Inicie o backend local (terminal 2)**
+
+```bash
+cd backend
+npm run dev:local
+```
+
+O arquivo `frontend/js/public-config.js` aponta, por padrão, para `http://127.0.0.1:3000`. Não altere esse endereço para a API comercial.
+
+**5. Abra o front-end com servidor HTTP local**
+
+Sirva a **raiz do repositório** em um servidor estático (por exemplo, Live Server), normalmente em `http://127.0.0.1:5500`, e acesse `frontend/html/login.html` por essa origem. Não abra o HTML diretamente via `file://`.
+
+**Opcional — criar dados de demonstração:** com emuladores em execução, rode `npm run seed:local` dentro de `backend`, usando somente credenciais fictícias definidas em `.env.local`.
+
+> Alguns recursos dependem de dados de exemplo e/ou de serviços externos não incluídos na cópia pública. Esta documentação descreve o ambiente local, não oferece uma implantação pronta para internet.
+
+## Testes
+
+No diretório `backend`:
+
+```bash
 npm test
 ```
 
-Alguns testes de integração também exigem os emuladores.
+Para os testes que utilizam os emuladores, inicie-os e depois rode:
 
-## Segurança e publicação
+```bash
+npm run test:integration
+```
 
-- Nenhuma pasta `.git` antiga, `node_modules`, `.env` real, serviço Firebase JSON ou log foi incluído nesta entrega.
-- Não publique a base de dados, usuários, IDs reais de clientes nem tokens do Mercado Pago.
-- Assets externos do Cloudinary foram mantidos onde eram logos/imagens públicas, mas ainda pertencem ao ambiente original: considere substituir por arquivos locais antes de publicar.
-- Antes de abrir um GitHub público, revise licenças de imagens, áudios e serviços externos.
-- Esta limpeza de referências e arquivos **não equivale a uma auditoria de segurança completa**.
+O projeto também inclui verificações para regras relacionadas a pedidos, estoque, assinaturas e outros fluxos. A execução de integração exige configuração local compatível.
 
-## Autoria
+## Segurança e limites desta versão
 
-Projeto de portfólio e aprendizado prático. Registre contribuições de ferramentas e terceiros de maneira fiel quando aplicável.
+- Não utilize credenciais reais, tokens de pagamento, contas de clientes ou um banco de produção nesta cópia.
+- Não exponha as portas dos emuladores Firebase na internet.
+- As URLs locais e configurações de exemplo foram separadas das de produção; **cada pessoa deve fornecer suas próprias configurações privadas**.
+- A presença de testes e validações não representa certificação de segurança nem prontidão para uso comercial.
+- Integrações externas e determinados recursos visuais podem exigir ativos e credenciais próprios.
+- Consulte o histórico de alterações antes de tornar o repositório público; segredos adicionados em commits anteriores precisam ser tratados mesmo que tenham sido apagados dos arquivos atuais.
 
-## Observações da revisão de segurança
+## Sobre o desenvolvimento
 
-- Esta cópia **não é um serviço pronto para implantação pública**: configure emuladores apenas na própria máquina, sem expor as portas à internet.
-- Dependências precisam ser verificadas com `npm audit --omit=dev` e `npm audit` em uma máquina com acesso ao registro npm.
-- A validação com o backend de produção e o pentest externo não fazem parte da distribuição de portfólio.
-- Antes de publicar, substitua assets vinculados ao Cloudinary comercial, se não quiser expor o identificador público de mídia.
-- Não publique o histórico Git do projeto comercial nem credenciais de nenhuma natureza.
+Projeto independente desenvolvido durante meus estudos em **Engenharia de Software**, com foco em transformar conhecimentos técnicos em funcionalidades reais, entender problemas de arquitetura e praticar a manutenção de código ao longo do tempo.
+
+**Objetivo profissional:** atuar em uma primeira oportunidade de estágio em Desenvolvimento de Software, com abertura para Back-end, Front-end ou Full Stack.
+
+---
+
+<p align="center"><strong>Vendly Commerce</strong> · Projeto de portfólio e aprendizado em Engenharia de Software</p>
