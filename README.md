@@ -25,25 +25,25 @@ O objetivo ao publicar o código é demonstrar **experiência prática em desenv
 
 ### Painel de pedidos
 
-![Tela de pedidos do Vendly Commerce](docs/images/pedidos.png)
+![Tela de pedidos do Vendly Commerce](/backenddocs/images/pedidos.png)
 
 Gerenciamento de pedidos com estados de atendimento, informações de itens e acompanhamento operacional. Identificadores e nomes de clientes foram ocultados na imagem.
 
 ### Dashboard
 
-![Dashboard do Vendly Commerce com indicadores e gráficos](docs/images/dashboard.png)
+![Dashboard do Vendly Commerce com indicadores e gráficos](/backenddocs/images/dashboard.png)
 
 Visão geral das vendas, produtos mais vendidos e situação do estoque.
 
 ### Faturamento
 
-![Tela de faturamento do Vendly Commerce](docs/images/faturamento.png)
+![Tela de faturamento do Vendly Commerce](/backend/docs/images/faturamento.png)
 
 Acompanhamento de valores por período e distribuição por forma de pagamento.
 
 ### Login e acesso ao painel
 
-![Tela de login do Vendly Commerce](docs/images/login.png)
+![Tela de login do Vendly Commerce](/backenddocs/images/login.png)
 
 Interface de acesso à área administrativa.
 
