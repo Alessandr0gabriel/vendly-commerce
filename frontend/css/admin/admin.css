@@ -1,0 +1,13 @@
+﻿/* admin.css - painel administrativo consolidado */
+@import url("./base.css");
+@import url("./layout.css");
+@import url("./buttons.css");
+@import url("./cards.css");
+@import url("./dashboard.css");
+@import url("./faturamento.css");
+@import url("./forms.css");
+@import url("./loading.css");
+@import url("./modals.css");
+@import url("./pedidos.css");
+@import url("./produtos.css");
+@import url("./responsive.css");

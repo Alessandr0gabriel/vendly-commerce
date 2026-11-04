@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="../manifest.json" />
+    <meta name="theme-color" content="#050b0a" />
+    <title>Vendly-commerce_login</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://res.cloudinary.com/doxnf3mtt/image/upload/v1782692828/logotipovendly-commerce_n0nipi.png"
+    />
+    <link rel="stylesheet" href="../css/login.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+    />
+    <script src="../js/public-config.js"></script>
+</head>
+
+  <body>
+    <!-- Loading inicial do Vendly Commerce -->
+    <div id="app-loading">
+      <div class="loading-content">
+        <img
+          src="https://res.cloudinary.com/doxnf3mtt/image/upload/v1782692828/logotipovendly-commerce_n0nipi.png"
+          alt="Vendly Commerce"
+          class="loading-logo"
+        />
+
+        <div class="loading-spinner"></div>
+
+        <p>Carregando Vendly Commerce...</p>
+      </div>
+    </div>
+    <main class="login-layout">
+      <section class="brand-panel" aria-label="Vendly Commerce">
+        <div class="brand-message">
+          <div class="brand" aria-label="Vendly Commerce">
+            <img
+              src="https://res.cloudinary.com/doxnf3mtt/image/upload/v1782692828/logotipovendly-commerce_n0nipi.png"
+              alt="Vendly Commerce"
+            />
+          </div>
+          <p class="eyebrow">Gestao que faz seu negocio avancar</p>
+          <h1>Controle sua operacao com clareza.</h1>
+          <p>
+            Um painel completo para o seu estabelecimento vender melhor,
+            organizar pedidos e tomar decisoes com mais seguranca.
+          </p>
+        </div>
+
+        <div class="brand-proof" aria-label="Beneficios da plataforma">
+          <div class="proof-item">
+            <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+            <span>Visao completa do negocio</span>
+          </div>
+          <div class="proof-item">
+            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+            <span>Dados protegidos e organizados</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="login-container" aria-labelledby="login-title">
+        <div class="login-card">
+          <div class="login-heading">
+            <div class="login-title-row">
+              <img
+                class="mobile-brand-avatar"
+                src="https://res.cloudinary.com/doxnf3mtt/image/upload/v1782692828/logotipovendly-commerce_n0nipi.png"
+                alt="Vendly Commerce"
+              />
+              <div>
+                <p class="eyebrow">Area restrita</p>
+                <h2 id="login-title">Acesse seu painel</h2>
+              </div>
+            </div>
+            <p>Use suas credenciais para continuar.</p>
+          </div>
+
+          <div class="field-group">
+            <label for="email">E-mail</label>
+            <div class="input-wrapper">
+              <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+              <input
+                id="email"
+                type="email"
+                placeholder="voce@empresa.com"
+                autocomplete="email"
+              />
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="senha">Senha</label>
+            <div class="input-password input-wrapper">
+              <i class="fa-solid fa-lock" aria-hidden="true"></i>
+              <input
+                type="password"
+                id="senha"
+                placeholder="Digite sua senha"
+                autocomplete="current-password"
+              />
+              <button
+                class="toggle-password"
+                type="button"
+                onclick="toggleSenha()"
+                aria-label="Mostrar ou ocultar senha"
+              >
+                <i data-feather="eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <p id="erro" role="alert"></p>
+
+          <button id="btnEntrar" onclick="login()">
+            Entrar no painel
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </button>
+
+          <p class="suporte-texto">
+            Precisa de ajuda para acessar?
+            <a
+              href="#contato"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Fale com o suporte
+            </a>
+          </p>
+        </div>
+        <p class="security-note">
+          <i class="fa-solid fa-lock" aria-hidden="true"></i> Acesso protegido e
+          monitorado
+        </p>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="../js/login.js"></script>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("../service-worker.js")
+            .then(() => {
+              console.log("Vendly Commerce: Service Worker registrado.");
+            })
+            .catch((error) => {
+              console.error(
+                "Vendly Commerce: erro ao registrar Service Worker:",
+                error,
+              );
+            });
+        });
+      }
+    </script>
+
+    <script>
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          document.getElementById("app-loading")?.classList.add("hide");
+        }, 500);
+      });
+    </script>
+  </body>
+</html>

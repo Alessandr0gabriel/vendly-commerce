@@ -1,0 +1,68 @@
+
+# =========================================================
+# VENDLY COMMERCE - GITIGNORE
+# =========================================================
+
+# DEPENDENCIAS
+node_modules/
+
+# VARIAVEIS DE AMBIENTE E SEGREDOS
+.env
+.env.*
+!.env.example
+!.env.local.example
+
+# CREDENCIAIS E CHAVES PRIVADAS
+*adminsdk*.json
+*service-account*.json
+*serviceAccount*.json
+*credentials*.json
+application_default_credentials.json
+*.pem
+*.key
+*.p12
+*.pfx
+*.secret
+*.secrets
+
+# LOGS
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# FIREBASE E EMULADORES
+.firebase/
+firebase-export/
+firebase-data/
+emulator-data/
+
+# BACKUPS E EXPORTACOES
+firestore_export/
+firestore-backup/
+backups/
+backup/
+
+# TESTES E COBERTURA
+coverage/
+.nyc_output/
+test-results/
+
+# ARQUIVOS TEMPORARIOS
+tmp/
+temp/
+*.tmp
+*.temp
+.cache/
+.eslintcache
+# SISTEMA OPERACIONAL
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# EDITORES
+.vscode/
+.idea/
+*.swp
+*.swo

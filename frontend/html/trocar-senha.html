@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vendly-commerce_Trocar_senha</title>
+    <link rel="stylesheet" href="../css/trocar_senha.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://res.cloudinary.com/doxnf3mtt/image/upload/v1782692828/logotipovendly-commerce_n0nipi.png"
+    />
+
+    <style>
+      body.restrito {
+        display: none !important;
+      }
+    </style>
+    <script src="../js/public-config.js"></script>
+</head>
+  <body class="restrito">
+    <div class="page-background">
+      <div class="password-panel">
+        <h1>Trocar senha</h1>
+        <p class="subtitle">Defina uma nova senha segura e confirme abaixo.</p>
+
+        <div class="form-group">
+          <label for="novaSenha">Nova senha</label>
+          <input
+            type="password"
+            id="novaSenha"
+            placeholder="Digite a nova senha"
+            autocomplete="new-password"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="confirmarSenha">Confirmar senha</label>
+          <input
+            type="password"
+            id="confirmarSenha"
+            placeholder="Confirme a nova senha"
+            autocomplete="new-password"
+          />
+        </div>
+
+        <div class="requirements-card">
+          <strong>Requisitos da senha:</strong>
+          <ul>
+            <li id="reqLength" class="requirement-item">mínimo 8 caracteres</li>
+            <li id="reqUpper" class="requirement-item">uma letra maiúscula</li>
+            <li id="reqLower" class="requirement-item">uma letra minúscula</li>
+            <li id="reqNumber" class="requirement-item">um número</li>
+          </ul>
+        </div>
+
+        <p id="feedback" class="feedback"></p>
+
+        <button id="submitBtn" onclick="trocarSenha()">Salvar senha</button>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/trocar-senha.js"></script>
+  </body>
+</html>

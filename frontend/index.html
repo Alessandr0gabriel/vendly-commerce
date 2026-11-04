@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vendly-commerce | Gestão, pedidos e vendas em um só lugar</title>
+    <meta
+      name="description"
+      content="Plataforma completa para gerenciar pedidos, produtos, vendas e cardápio digital do seu estabelecimento."
+    />
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://res.cloudinary.com/doxnf3mtt/image/upload/v1782692828/logotipovendly-commerce_n0nipi.png"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="js/public-config.js"></script>
+</head>
+  <body>
+    <div class="page">
+      <header class="topbar" id="siteHeader">
+        <a href="#top" class="brand">
+          <img
+            class="brand-badge"
+            src="https://res.cloudinary.com/doxnf3mtt/image/upload/v1782692828/logotipovendly-commerce_n0nipi.png"
+            alt="Logo Vendly Commerce"
+          />
+          <span>Vendly-commerce</span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          aria-controls="navLinks"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="nav-links" id="navLinks">
+          <a href="#funcionalidades">Funcionalidades</a>
+          <a href="#como-funciona">Como funciona</a>
+          <a href="#planos">Planos</a>
+          <a href="html/login.html" class="nav-login">Fazer login</a>
+        </nav>
+
+        <a href="#planos" class="btn-primary btn-header-cta"
+          >Conhecer o Vendly</a
+        >
+      </header>
+
+      <section class="hero" id="top">
+        <div class="hero-content">
+          <span class="pill">Plataforma completa para o seu negócio</span>
+          <h1>Gestão, pedidos e vendas em um só lugar.</h1>
+          <p>
+            Tenha mais controle sobre seu estabelecimento com uma plataforma
+            completa para gerenciar pedidos, produtos, vendas e seu cardápio
+            digital.
+          </p>
+          <div class="hero-actions">
+            <a href="#planos" class="btn-primary">Conhecer o Vendly</a>
+            <a href="#como-funciona" class="btn-secondary">Ver como funciona</a>
+          </div>
+
+          <div class="trust-mini">
+            <span><i class="ok-dot"></i>Cardápio digital</span>
+            <span><i class="ok-dot"></i>Gestão de pedidos</span>
+            <span><i class="ok-dot"></i>Pagamento via Pix</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="device-mock">
+            <div class="device-bar">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="device-screen">
+              <div class="screen-topline">
+                <strong>Dashboard</strong>
+                <em class="dot-online">Online</em>
+              </div>
+              <div class="screen-metrics">
+                <div class="metric-card">
+                  <span>Pedidos hoje</span>
+                  <strong>128</strong>
+                </div>
+                <div class="metric-card">
+                  <span>Clientes ativos</span>
+                  <strong>196</strong>
+                </div>
+                <div class="metric-card">
+                  <span>Receita</span>
+                  <strong>R$ 9k</strong>
+                </div>
+              </div>
+              <div class="screen-list">
+                <div class="screen-list-item">
+                  <span>Pedido #128</span>
+                  <em class="tag-progress">Em preparo</em>
+                </div>
+                <div class="screen-list-item">
+                  <span>Pedido #127</span>
+                  <em class="tag-done">Entregue</em>
+                </div>
+                <div class="screen-list-item">
+                  <span>Pedido #126</span>
+                  <em class="tag-wait">Aguardando pagamento</em>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="float-card float-card-1">💳 Pix confirmado</div>
+          <div class="float-card float-card-2">📦 Novo pedido recebido</div>
+        </div>
+      </section>
+
+      <section class="trust-strip">
+        <p>
+          Uma plataforma desenvolvida para simplificar a operação do seu
+          negócio.
+        </p>
+        <div class="trust-badges">
+          <span>✓ Gestão de pedidos</span>
+          <span>✓ Cardápio digital</span>
+          <span>✓ Gestão de vendas</span>
+          <span>✓ Pagamentos via Pix</span>
+        </div>
+      </section>
+
+      <section class="problem-section reveal">
+        <div class="section-head">
+          <span class="section-kicker">O problema</span>
+          <h2>Seu negócio não precisa ser complicado.</h2>
+        </div>
+        <div class="problem-grid">
+          <div class="problem-card">
+            <span class="problem-icon">🧾</span>
+            <h3>Pedidos desorganizados</h3>
+            <p>
+              Comandas de papel e anotações soltas dificultam o controle do que
+              está sendo vendido.
+            </p>
+          </div>
+          <div class="problem-card">
+            <span class="problem-icon">📂</span>
+            <h3>Informações espalhadas</h3>
+            <p>
+              Produtos, preços e pedidos em lugares diferentes tornam a rotina
+              mais lenta.
+            </p>
+          </div>
+          <div class="problem-card">
+            <span class="problem-icon">📉</span>
+            <h3>Dificuldade para acompanhar vendas</h3>
+            <p>
+              Sem um painel centralizado, fica difícil saber o que realmente
+              está funcionando.
+            </p>
+          </div>
+          <div class="problem-card">
+            <span class="problem-icon">🔁</span>
+            <h3>Processos manuais</h3>
+            <p>
+              Tarefas repetitivas tomam um tempo que poderia ser usado para
+              atender melhor o cliente.
+            </p>
+          </div>
+        </div>
+        <p class="problem-solution">
+          Centralize sua operação com o <strong>Vendly</strong>.
+        </p>
+      </section>
+
+      <section id="funcionalidades" class="features-section reveal">
+        <div class="section-head">
+          <span class="section-kicker">Funcionalidades</span>
+          <h2>Tudo o que o seu negócio precisa, em um só sistema.</h2>
+        </div>
+        <div class="features-grid">
+          <article class="feature-card">
+            <div class="feature-icon">🍔</div>
+            <h3>Cardápio digital</h3>
+            <p>
+              Compartilhe seu cardápio online para os clientes fazerem pedidos.
+            </p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">📦</div>
+            <h3>Gestão de pedidos</h3>
+            <p>
+              Acompanhe cada pedido do recebimento até a entrega, em tempo real.
+            </p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">💰</div>
+            <h3>Gestão de vendas</h3>
+            <p>
+              Tenha visão clara do que está sendo vendido no seu
+              estabelecimento.
+            </p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">💳</div>
+            <h3>Pagamento via Pix</h3>
+            <p>Receba pagamentos via Pix diretamente pela plataforma.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Dashboard e relatórios</h3>
+            <p>Acompanhe indicadores do seu negócio em um painel único.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Atualizações em tempo real</h3>
+            <p>
+              Novos pedidos e status aparecem instantaneamente para sua equipe.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="como-funciona" class="how-section reveal">
+        <div class="section-head">
+          <span class="section-kicker">Como funciona</span>
+          <h2>Comece a usar em poucos passos.</h2>
+        </div>
+        <div class="how-grid">
+          <div class="how-step">
+            <span class="how-number">01</span>
+            <h3>Configure seu estabelecimento</h3>
+            <p>Defina os dados do seu negócio na plataforma.</p>
+          </div>
+          <div class="how-step">
+            <span class="how-number">02</span>
+            <h3>Cadastre seus produtos</h3>
+            <p>Adicione itens, preços e informações do seu cardápio.</p>
+          </div>
+          <div class="how-step">
+            <span class="how-number">03</span>
+            <h3>Compartilhe seu cardápio</h3>
+            <p>Envie o link do seu cardápio digital para os clientes.</p>
+          </div>
+          <div class="how-step">
+            <span class="how-number">04</span>
+            <h3>Gerencie pedidos e vendas</h3>
+            <p>Acompanhe tudo em tempo real em um único painel.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="segments-section reveal">
+        <div class="section-head">
+          <span class="section-kicker">Para quem é</span>
+          <h2>Feito para diferentes tipos de estabelecimento.</h2>
+        </div>
+        <div class="segments-grid">
+          <span class="segment-chip">Lanchonetes</span>
+          <span class="segment-chip">Pizzarias</span>
+          <span class="segment-chip">Restaurantes</span>
+          <span class="segment-chip">Cafeterias</span>
+          <span class="segment-chip">Food trucks</span>
+        </div>
+      </section>
+
+      <section class="pricing-section reveal">
+        <div class="section-head">
+          <span class="section-kicker">Planos</span>
+          <h2>Escolha o plano ideal para o seu negócio.</h2>
+        </div>
+        <section class="pricing" id="planos">
+          <p class="pricing-loading">Carregando planos...</p>
+        </section>
+      </section>
+
+      <section class="cta final-cta reveal" id="contato">
+        <h2>Pronto para simplificar a gestão do seu negócio?</h2>
+        <p>
+          Fale com a gente e descubra como o Vendly pode organizar pedidos,
+          vendas e cardápio em um só lugar.
+        </p>
+        <a href="#planos" class="btn-primary">Falar com a gente</a>
+      </section>
+    </div>
+
+    <footer>
+      © 2026 Vendly-commerce · Gestão inteligente para o seu negócio.
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

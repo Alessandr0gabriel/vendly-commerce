@@ -1,0 +1,651 @@
+/* MODALS */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.62);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 999;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  width: min(600px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: rgba(12, 17, 39, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  padding: 26px;
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.24);
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #6e8cfe, #e95fad);
+  border-radius: 10px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.modal-header h3 {
+  margin: 0;
+}
+
+.close-modal {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f5f7ff;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.modal-body {
+  display: grid;
+  gap: 16px;
+}
+
+.assinatura-resumo {
+  display: grid;
+  gap: 5px;
+  padding: 13px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.assinatura-resumo strong {
+  color: #eef2ff;
+  font-size: 0.95rem;
+}
+
+.assinatura-resumo span {
+  color: rgba(238, 242, 255, 0.68);
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.assinatura-resumo.status-ativa {
+  border-color: rgba(61, 220, 151, 0.35);
+  background: rgba(61, 220, 151, 0.08);
+}
+
+.assinatura-resumo.status-carencia {
+  border-color: rgba(255, 159, 67, 0.4);
+  background: rgba(255, 159, 67, 0.08);
+}
+
+.assinatura-resumo.status-suspensa {
+  border-color: rgba(234, 84, 85, 0.4);
+  background: rgba(234, 84, 85, 0.08);
+}
+
+#modalAssinatura .primary-btn {
+  width: fit-content;
+  min-width: 220px;
+  padding: 11px 18px;
+  border-radius: 12px;
+  justify-self: start;
+}
+
+#btnCriarPixAssinatura.is-loading {
+  cursor: wait;
+  opacity: 0.78;
+}
+
+#btnCriarPixAssinatura .button-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-top-color: #fff;
+  border-radius: 50%;
+  vertical-align: -2px;
+  animation: assinatura-button-spin 0.75s linear infinite;
+}
+
+@keyframes assinatura-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.modal-body input[type="text"],
+.modal-body input[type="time"],
+.modal-body input[type="file"] {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: #eef2ff;
+}
+
+.modal-body input[type="file"] {
+  padding: 12px 14px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+#modalAssinatura .assinatura-modal-content {
+  width: min(1120px, 100%);
+  padding: 28px 32px;
+  border-color: rgba(99, 120, 255, 0.2);
+  border-radius: 22px;
+  background:
+    radial-gradient(ellipse at 85% 0, rgba(92, 77, 220, 0.1), transparent 34%),
+    linear-gradient(145deg, #101a30 0%, #0a1224 100%);
+}
+
+#modalAssinatura .assinatura-modal-header {
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.assinatura-titulo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.assinatura-titulo h3 {
+  color: #f3f5ff;
+  font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+  letter-spacing: -0.025em;
+}
+
+.assinatura-titulo p {
+  margin: 5px 0 0;
+  color: #a8b6d2;
+  font-size: 0.9rem;
+}
+
+.assinatura-icone {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  place-items: center;
+  border: 1px solid rgba(114, 119, 255, 0.24);
+  border-radius: 15px;
+  background: rgba(91, 101, 255, 0.13);
+  color: #8589ff;
+  font-size: 1.8rem;
+}
+
+#modalAssinatura .assinatura-modal-body {
+  gap: 14px;
+}
+
+#modalAssinatura .assinatura-resumo {
+  padding: 12px 15px;
+  border-color: rgba(255, 167, 54, 0.45);
+  background: rgba(255, 157, 40, 0.08);
+}
+
+#modalAssinatura .assinatura-resumo.status-ativa {
+  border-color: rgba(61, 220, 151, 0.35);
+  background: rgba(61, 220, 151, 0.08);
+}
+
+.assinatura-plano-atual {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid rgba(131, 159, 211, 0.12);
+  border-radius: 13px;
+  background: rgba(24, 39, 65, 0.55);
+}
+
+.assinatura-plano-atual span,
+.assinatura-opcao > span:not(.assinatura-opcao-cabecalho) {
+  color: #9aaccb;
+  font-size: 0.83rem;
+}
+
+.assinatura-plano-atual strong {
+  color: #f1f4ff;
+}
+
+.assinatura-carregando {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-height: 64px;
+  padding: 14px;
+  border: 1px solid rgba(131, 159, 211, 0.12);
+  border-radius: 13px;
+  color: #a8b6d2;
+  background: rgba(24, 39, 65, 0.4);
+}
+
+.assinatura-skeleton {
+  width: 23px;
+  height: 23px;
+  border: 2px solid rgba(148, 164, 197, 0.25);
+  border-top-color: #7b7fff;
+  border-radius: 50%;
+  animation: assinatura-button-spin 0.8s linear infinite;
+}
+
+.assinatura-opcoes-erro {
+  padding: 14px;
+  border: 1px solid rgba(234, 84, 85, 0.4);
+  border-radius: 13px;
+  background: rgba(234, 84, 85, 0.08);
+}
+
+.assinatura-opcoes-erro p {
+  margin: 0 0 12px;
+  color: #ffd5d5;
+}
+
+.assinatura-selecao-titulo {
+  margin: 2px 0 -4px;
+  color: #e4eaff;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.assinatura-conteudo:not([hidden]) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+}
+
+.assinatura-carregando[hidden] {
+  display: none;
+}
+
+.assinatura-coluna-opcoes,
+.assinatura-coluna-resumo {
+  display: grid;
+  min-width: 0;
+  gap: 14px;
+}
+
+.assinatura-periodicidades {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.assinatura-opcao {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  padding: 15px 16px;
+  border: 1px solid rgba(124, 150, 196, 0.24);
+  border-radius: 15px;
+  background: rgba(22, 36, 61, 0.7);
+  color: #eef2ff;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.assinatura-opcao:hover:not(:disabled) {
+  border-color: rgba(129, 138, 255, 0.65);
+}
+
+.assinatura-opcao[aria-checked="true"] {
+  border: 1px solid #6865ff;
+  background: linear-gradient(135deg, rgba(64, 82, 180, 0.25), rgba(105, 66, 191, 0.2));
+  box-shadow: 0 0 0 1px rgba(104, 101, 255, 0.14);
+}
+
+.assinatura-opcao:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.assinatura-opcao-cabecalho {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 5px;
+}
+
+.assinatura-opcao-cabecalho strong {
+  font-size: 0.96rem;
+}
+
+.assinatura-opcao-radio {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  border: 2px solid #6b7c9e;
+  border-radius: 50%;
+}
+
+.assinatura-opcao[aria-checked="true"] .assinatura-opcao-radio {
+  border: 5px solid #7779ff;
+  background: #f5f5ff;
+  box-shadow: 0 0 0 2px rgba(119, 121, 255, 0.22);
+}
+
+.assinatura-opcao-preco {
+  color: #f4f6ff;
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
+  letter-spacing: -0.035em;
+}
+
+.assinatura-selo-desconto {
+  margin-left: auto;
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: linear-gradient(100deg, #795dff, #d94fa7);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.assinatura-preco-riscado {
+  color: #94a5c4;
+  font-size: 0.82rem;
+  text-decoration: line-through;
+}
+
+.assinatura-economia-anual {
+  color: #27d789;
+  font-size: 0.8rem;
+}
+
+.assinatura-opcao-rodape {
+  padding-top: 8px;
+  border-top: 1px solid rgba(131, 159, 211, 0.12);
+}
+
+.assinatura-resumo-valores {
+  padding: 13px 16px 9px;
+  border: 1px solid rgba(131, 159, 211, 0.13);
+  border-radius: 15px;
+  background: rgba(20, 33, 56, 0.72);
+}
+
+.assinatura-resumo-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding-bottom: 11px;
+  border-bottom: 1px solid rgba(131, 159, 211, 0.13);
+}
+
+.assinatura-resumo-cabecalho > div {
+  display: grid;
+  gap: 3px;
+}
+
+.assinatura-resumo-cabecalho strong {
+  color: #eef2ff;
+}
+
+.assinatura-resumo-cabecalho span,
+.assinatura-resumo-valores dt {
+  color: #9aaccb;
+  font-size: 0.8rem;
+}
+
+.assinatura-resumo-cabecalho > span {
+  text-align: right;
+}
+
+.assinatura-resumo-valores dl {
+  display: grid;
+  gap: 7px;
+  margin: 10px 0 0;
+}
+
+.assinatura-resumo-valores [hidden] {
+  display: none !important;
+}
+
+.assinatura-resumo-valores dl > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.assinatura-resumo-valores dd {
+  margin: 0;
+  color: #e8edff;
+  font-size: 0.87rem;
+  text-align: right;
+}
+
+.assinatura-resumo-valores .assinatura-resumo-total {
+  margin-top: 2px;
+  padding-top: 9px;
+  border-top: 1px solid rgba(131, 159, 211, 0.16);
+}
+
+.assinatura-resumo-total dt,
+.assinatura-resumo-total dd {
+  color: #f5f7ff;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.assinatura-resumo-total dd {
+  font-size: 1.25rem;
+}
+
+#modalAssinatura #btnCriarPixAssinatura {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  justify-self: stretch;
+  border-radius: 12px;
+  font-size: 0.97rem;
+}
+
+#modalAssinatura #btnCriarPixAssinatura:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.assinatura-seguranca {
+  margin: -6px 0 0;
+  color: #91a2c1;
+  font-size: 0.76rem;
+  text-align: center;
+}
+
+.assinatura-pix-detalhes {
+  padding: 12px;
+  border: 1px solid rgba(131, 159, 211, 0.14);
+  border-radius: 12px;
+  color: #dfe6fa;
+  background: rgba(24, 39, 65, 0.55);
+  line-height: 1.6;
+  text-align: center;
+}
+
+.assinatura-qr-code {
+  display: block;
+  width: min(240px, 75vw);
+  aspect-ratio: 1;
+  margin: 4px auto;
+  border-radius: 10px;
+  background: #fff;
+}
+
+#assinaturaCopiaCola {
+  width: 100%;
+  max-width: 100%;
+  resize: vertical;
+  overflow-wrap: anywhere;
+}
+
+#assinaturaPixResultado .secondary-btn {
+  width: 100%;
+}
+
+#modalAssinatura,
+#modalAssinatura * {
+  box-sizing: border-box;
+}
+
+#modalAssinatura .assinatura-modal-content,
+.assinatura-opcao,
+.assinatura-resumo-valores {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.assinatura-opcao-preco,
+.assinatura-preco-riscado,
+.assinatura-economia-anual,
+.assinatura-resumo-valores dd {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+  #modalAssinatura .assinatura-modal-content {
+    width: 100%;
+    max-height: none;
+    padding: 4px 0 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  #modalAssinatura .assinatura-modal-body {
+    padding: 0;
+  }
+
+  .assinatura-periodicidades {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .assinatura-titulo {
+    gap: 10px;
+  }
+
+  .assinatura-icone {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+    border-radius: 12px;
+    font-size: 1.45rem;
+  }
+
+  .assinatura-titulo p {
+    font-size: 0.82rem;
+  }
+
+  .assinatura-plano-atual {
+    padding: 11px 13px;
+  }
+
+  .assinatura-opcao {
+    padding: 13px 14px;
+  }
+
+  .assinatura-opcao-preco {
+    font-size: 1.3rem;
+  }
+
+  .assinatura-resumo-valores {
+    padding: 12px 14px 8px;
+  }
+
+  .assinatura-resumo-cabecalho {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .assinatura-resumo-cabecalho > span {
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .assinatura-resumo-valores dl > div {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .assinatura-resumo-valores dd {
+    text-align: left;
+  }
+
+  .assinatura-resumo-valores .assinatura-resumo-total {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .assinatura-resumo-total dd {
+    text-align: right;
+  }
+
+  .assinatura-seguranca {
+    margin: 0;
+    padding-bottom: 4px;
+    line-height: 1.4;
+  }
+}
+@media (max-width: 768px) {
+  #btnCriarPixAssinatura {
+    width: 100%;
+    min-height: 50px;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .assinatura-seguranca {
+    text-align: center;
+  }
+}

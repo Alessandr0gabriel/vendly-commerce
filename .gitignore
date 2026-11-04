@@ -1,0 +1,54 @@
+
+# Dependências
+node_modules/
+**/node_modules/
+
+# Variáveis de ambiente
+.env
+.env.*
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env.local.example
+
+# Credenciais e chaves privadas
+**/*adminsdk*.json
+**/*service-account*.json
+**/*serviceAccount*.json
+**/*credentials*.json
+**/*.pem
+**/*.key
+**/*.p12
+**/*.pfx
+**/*.secret
+
+# Logs
+*.log
+**/*.log
+npm-debug.log*
+
+# Firebase e emuladores
+**/.firebase/
+**/firebase-export/
+**/firebase-data/
+**/emulator-data/
+
+# Backups
+**/backup/
+**/backups/
+**/firestore_export/
+**/firestore-backup/
+
+# Arquivos temporários
+**/.cache/
+**/coverage/
+**/test-results/
+**/tmp/
+**/temp/
+
+# Sistema operacional e editores
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/

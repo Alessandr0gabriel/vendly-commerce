@@ -1,0 +1,226 @@
+﻿/* BOTÕES */
+.primary-btn,
+.secondary-btn,
+.modal-footer button,
+.box-url button,
+.copy-btn {
+  border: none;
+  border-radius: 18px;
+  cursor: pointer;
+  font-weight: 700;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, #6e8cfe, #e95fad);
+  color: #fff;
+  padding: 14px 24px;
+  box-shadow: 0 20px 50px rgba(110, 140, 254, 0.18);
+}
+
+.primary-btn:hover,
+.modal-footer .primary-btn:hover,
+.box-url button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 24px 55px rgba(110, 140, 254, 0.24);
+}
+
+.secondary-btn {
+  background: rgba(255, 255, 255, 0.08);
+  color: #eef2ff;
+  padding: 14px 20px;
+}
+
+.secondary-btn:hover {
+  opacity: 0.85;
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.08);
+  color: #eef2ff;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  transform: translateY(-1px);
+}
+
+.btn-whatsapp {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: #25d366;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.sidebar-toggle {
+  display: none;
+  border: none;
+  border-radius: 18px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #eef2ff;
+  font-weight: 700;
+  cursor: pointer;
+  min-width: 56px;
+}
+
+.sidebar-toggle:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.acoes button {
+  background: rgba(255, 255, 255, 0.08);
+  color: #eef2ff;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.acoes .status-action {
+  min-width: 118px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+.acoes .status-preparando {
+  border-color: rgba(251, 191, 36, 0.42);
+  color: #fcd34d;
+  background: rgba(251, 191, 36, 0.09);
+}
+
+.acoes .status-a-caminho {
+  border-color: rgba(96, 165, 250, 0.42);
+  color: #93c5fd;
+  background: rgba(96, 165, 250, 0.09);
+}
+
+.acoes .status-action:hover {
+  transform: translateY(-2px);
+}
+
+.acoes .status-preparando.selected {
+  color: #422006;
+  background: #fbbf24;
+  border-color: #fbbf24;
+  box-shadow: 0 8px 22px rgba(251, 191, 36, 0.24);
+}
+
+.acoes .status-a-caminho.selected {
+  color: #082f49;
+  background: #60a5fa;
+  border-color: #60a5fa;
+  box-shadow: 0 8px 22px rgba(96, 165, 250, 0.24);
+}
+
+.pedido-status-label {
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.pedido-status-label.status-aguardando {
+  color: #fde68a;
+  background: rgba(245, 158, 11, 0.14);
+}
+
+.pedido-status-label.status-preparando {
+  color: #fcd34d;
+  background: rgba(251, 191, 36, 0.14);
+}
+
+.pedido-status-label.status-a_caminho {
+  color: #93c5fd;
+  background: rgba(96, 165, 250, 0.14);
+}
+
+.acoes button:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* SIDEBAR LINKS */
+.sidebar-link {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.02);
+  color: #eef2ff;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  position: relative; /* required so badge positions relative to button */
+  transition:
+    transform 0.12s ease,
+    background 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+.sidebar-link:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-link.active {
+  background: linear-gradient(
+    90deg,
+    rgba(110, 140, 254, 0.12),
+    rgba(233, 95, 173, 0.06)
+  );
+  border: 1px solid rgba(110, 140, 254, 0.16);
+}
+
+.badge {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: #ff3b3b;
+  color: #fff;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 5;
+}
+
+.badge.hidden {
+  display: none !important;
+}
+
+.sidebar-link {
+  padding-left: 40px;
+}
+
+.filtro-data button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #6a5cff, #ff4ecd);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filtro-data button:hover {
+  opacity: 0.8;
+}

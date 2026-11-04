@@ -1,0 +1,142 @@
+﻿/* BASE */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: radial-gradient(
+    circle at top left,
+    #0b1225 0%,
+    #08101e 45%,
+    #04070f 100%
+  );
+  color: #eef2ff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.admin-shell {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 24px;
+  padding: 24px;
+}
+
+.sidebar {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 18, 37, 0.98),
+    rgba(8, 16, 30, 0.98)
+  );
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  height: 100vh;
+  overflow-y: auto;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.22);
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #8b5cf6 transparent;
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.sidebar.active {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #6e8cfe, #e95fad);
+  border-radius: 10px;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #6f8cff, #e44bcf);
+  color: #fff;
+  font-weight: 900;
+  box-shadow: 0 14px 30px rgba(110, 140, 254, 0.22);
+}
+
+.sidebar-brand strong {
+  display: block;
+  font-size: 1.05rem;
+}
+
+.sidebar-brand small {
+  display: block;
+  color: rgba(238, 242, 255, 0.7);
+}
+
+.sidebar-close {
+  margin-left: auto;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #eef2ff;
+  cursor: pointer;
+  display: none;
+}
+
+.sidebar-nav {
+  display: grid;
+  gap: 12px;
+}
+
+.sidebar-footer {
+  color: rgba(238, 242, 255, 0.65);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: red;
+  color: white;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}

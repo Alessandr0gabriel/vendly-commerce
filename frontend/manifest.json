@@ -1,0 +1,32 @@
+{
+  "name": "Vendly Commerce",
+  "short_name": "Vendly",
+  "description": "Sistema de gestão de vendas Vendly Commerce",
+  "start_url": "/html/login.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#070C1A",
+  "theme_color": "#070C1A",
+  "orientation": "portrait-primary",
+
+  "icons": [
+    {
+      "src": "/assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

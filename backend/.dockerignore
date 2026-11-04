@@ -1,0 +1,74 @@
+
+# =========================================================
+# VENDLY COMMERCE - DOCKERIGNORE
+# =========================================================
+
+# GIT
+.git
+.gitignore
+.github/
+
+# DEPENDENCIAS LOCAIS
+node_modules/
+
+# VARIAVEIS DE AMBIENTE
+.env
+.env.*
+!.env.example
+!.env.local.example
+
+# CREDENCIAIS E CHAVES
+*adminsdk*.json
+*service-account*.json
+*serviceAccount*.json
+*credentials*.json
+application_default_credentials.json
+*.pem
+*.key
+*.p12
+*.pfx
+*.secret
+*.secrets
+
+# LOGS
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# FIREBASE E EMULADORES
+.firebase/
+firebase-export/
+firebase-data/
+emulator-data/
+
+# BACKUPS
+firestore_export/
+firestore-backup/
+backups/
+backup/
+
+# TESTES E COBERTURA
+test/
+tests/
+coverage/
+.nyc_output/
+test-results/
+
+# ARQUIVOS TEMPORARIOS
+tmp/
+temp/
+*.tmp
+*.temp
+.cache/
+.eslintcache
+
+# EDITORES E SISTEMA
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo

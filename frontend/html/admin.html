@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="../manifest.json" />
+    <meta name="theme-color" content="#050b0a" />
+    <title>Vendly-commerce_Painel_Admin</title>
+    <link rel="stylesheet" href="../css/admin/admin.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://res.cloudinary.com/doxnf3mtt/image/upload/v1782692828/logotipovendly-commerce_n0nipi.png"
+    />
+
+    <style>
+      body.restrito {
+        display: none !important;
+      }
+    </style>
+    <script src="../js/public-config.js"></script>
+</head>
+  <body class="restrito">
+    <div class="admin-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <span class="brand-icon" id="brandIcon">B</span>
+          <div>
+            <strong id="sidebarEstablishmentName">Carregando...</strong>
+            <small id="planLabel">Plano</small>
+          </div>
+          <button class="sidebar-close" onclick="toggleSidebar()">✕</button>
+        </div>
+
+        <nav class="sidebar-nav">
+          <button
+            class="sidebar-link active"
+            onclick="setActiveMenu(this)"
+            data-menu="Pedidos"
+          >
+            Pedidos
+            <span id="badgePedidos" class="badge hidden">!</span>
+          </button>
+          <button
+            class="sidebar-link"
+            onclick="
+              setActiveMenu(this);
+              closeSidebar();
+            "
+            data-menu="Produtos"
+          >
+            Produtos
+          </button>
+          <button
+            class="sidebar-link"
+            onclick="
+              setActiveMenu(this);
+              closeSidebar();
+            "
+            data-menu="Histórico"
+          >
+            Histórico
+          </button>
+          <button
+            class="sidebar-link"
+            onclick="
+              setActiveMenu(this);
+              carregarPedidosArquivados();
+              closeSidebar();
+            "
+            data-menu="Pedidos Arquivados"
+          >
+            Pedidos Arquivados
+          </button>
+          <button
+            class="sidebar-link"
+            data-menu="Produtos"
+            onclick="
+              setActiveMenu(this);
+              abrirModal('produto');
+              closeSidebar();
+            "
+          >
+            Cadastrar produto
+          </button>
+          <button
+            class="sidebar-link"
+            onclick="
+              setActiveMenu(this);
+              abrirModal('horarios');
+              carregarHorarios();
+              closeSidebar();
+            "
+            data-menu="Horários"
+          >
+            Horários
+          </button>
+          <button
+            class="sidebar-link"
+            onclick="
+              setActiveMenu(this);
+              abrirModal('banner');
+              closeSidebar();
+            "
+            data-menu="Banner"
+          >
+            Banner
+          </button>
+          <button
+            class="sidebar-link"
+            data-menu="Dados da loja"
+            onclick="
+              setActiveMenu(this);
+              abrirModal('dados');
+              closeSidebar();
+            "
+          >
+            Dados da loja
+          </button>
+          <button
+            class="sidebar-link"
+            onclick="
+              setActiveMenu(this);
+              closeSidebar();
+            "
+            data-menu="Faturamento"
+          >
+            Faturamento
+          </button>
+          <button
+            class="sidebar-link"
+            onclick="
+              setActiveMenu(this);
+              closeSidebar();
+            "
+            data-menu="Dashboard"
+          >
+            Dashboard
+          </button>
+          <button
+            class="sidebar-link"
+            onclick="
+              setActiveMenu(this);
+              closeSidebar();
+            "
+            data-menu="Ajuda"
+          >
+            Ajuda
+          </button>
+          <button
+            class="sidebar-link"
+            onclick="
+              setActiveMenu(this);
+              abrirModalLinkDaLoja();
+              closeSidebar();
+            "
+            data-menu="Link"
+          >
+            Link da loja!
+          </button>
+          <button
+            class="sidebar-link"
+            onclick="
+              abrirModalAssinatura();
+              closeSidebar();
+            "
+            data-menu="Assinatura"
+          >
+            Renovar plano
+          </button>
+          <button class="sidebar-link" onclick="logout()">Sair</button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <p>
+            Use o botão de cada seção para abrir o formulário em modal e manter
+            os produtos visíveis na tela.
+          </p>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="main-header">
+          <div id="establishmentHeader" class="establishment-header">
+            <h1 id="establishmentName">Carregando...</h1>
+            <div class="faturamento-container">
+              <span class="faturamento-label">Faturamento de hoje:</span>
+              <span id="mediaFaturamento" class="faturamento-badge"
+                >R$ 0,00</span
+              >
+            </div>
+          </div>
+          <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+        </header>
+
+        <section class="section-grid">
+          <div class="panel-card full-card">
+            <div
+              id="panelLoading"
+              class="panel-loading-overlay"
+              role="status"
+              aria-label="Carregando seção"
+            >
+              <div class="loading-bars" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+            <div id="panelDefaultContent">
+              <div class="card-head">
+                <div>
+                  <h2 id="tituloSecao">Pedidos pendentes</h2>
+                  <p id="card-head-p">
+                    Visualize e finalize pedidos feitos pelos clientes. Gerencie
+                    os pedidos em tempo real.
+                  </p>
+                </div>
+              </div>
+              <div id="listarPedidos" class="produtos-list"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div
+      id="modalProduto"
+      class="modal"
+      onclick="fecharModal(event, 'modalProduto')"
+    >
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="modal-header">
+          <div>
+            <h3 id="produtoModalTitle">Cadastrar Produto</h3>
+            <p>
+              Preencha as informações do produto para adicionar ao cardápio.
+            </p>
+          </div>
+          <button
+            class="close-modal"
+            onclick="fecharModal(null, 'modalProduto')"
+          >
+            ×
+          </button>
+        </div>
+        <div id="configMercadoPagoProduto" class="mercado-pago-produto" hidden>
+          <div class="mercado-pago-produto-head">
+            <span class="mercado-pago-produto-icon">💡</span>
+            <div>
+              <strong>Taxa do Pix</strong>
+              <p>
+                Toda transação via Pix tem uma taxa. Para cobrir esse custo,
+                você pode acrescentar um valor extra ao preço dos produtos.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-body">
+          <label>Nome do produto</label>
+          <input id="nome" placeholder="Nome do produto" />
+          <label>Descrição</label>
+          <input id="descricao" placeholder="Descrição" />
+          <label>Categoria</label>
+          <input id="categoria" placeholder="Categoria" />
+          <label>Preço</label>
+          <input id="preco" placeholder="Preço" />
+
+          <div class="switch-group">
+            <label>Produto com controle de estoque?</label>
+
+            <label class="switch">
+              <input type="checkbox" id="controlaEstoque" />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <input id="estoque" placeholder="Estoque" />
+          <label>Imagem</label>
+          <input type="file" id="imagem" accept="image/*" />
+          <input type="hidden" id="editImagemAtual" />
+        </div>
+        <div class="modal-footer">
+          <button
+            class="secondary-btn"
+            onclick="fecharModal(null, 'modalProduto')"
+          >
+            Cancelar
+          </button>
+          <button class="primary-btn" onclick="salvarProdutoModal()">
+            Salvar produto
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="modalHorarios"
+      class="modal"
+      onclick="fecharModal(event, 'modalHorarios')"
+    >
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="modal-header">
+          <div>
+            <h3>Horários de funcionamento</h3>
+            <p>Defina horários e dias em que a loja permanece aberta.</p>
+          </div>
+          <button
+            class="close-modal"
+            onclick="fecharModal(null, 'modalHorarios')"
+          >
+            ×
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="dias-semana">
+            <label><input type="checkbox" value="segunda" /> Seg</label>
+            <label><input type="checkbox" value="terca" /> Ter</label>
+            <label><input type="checkbox" value="quarta" /> Qua</label>
+            <label><input type="checkbox" value="quinta" /> Qui</label>
+            <label><input type="checkbox" value="sexta" /> Sex</label>
+            <label><input type="checkbox" value="sabado" /> Sab</label>
+            <label><input type="checkbox" value="domingo" /> Dom</label>
+          </div>
+          <div class="horario-config">
+            <div>
+              <label>Abertura</label>
+              <input type="time" id="abertura-global" />
+            </div>
+            <div>
+              <label>Fechamento</label>
+              <input type="time" id="fechamento-global" />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            class="secondary-btn"
+            onclick="fecharModal(null, 'modalHorarios')"
+          >
+            Cancelar
+          </button>
+          <button class="primary-btn" onclick="aplicarHorarios()">
+            Aplicar e salvar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="modalBanner"
+      class="modal"
+      onclick="fecharModal(event, 'modalBanner')"
+    >
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="modal-header">
+          <div>
+            <h3>Atualizar banner</h3>
+            <p>Envie uma imagem para o banner do estabelecimento.</p>
+          </div>
+          <button
+            class="close-modal"
+            onclick="fecharModal(null, 'modalBanner')"
+          >
+            ×
+          </button>
+        </div>
+        <div class="modal-body">
+          <label>Banner do estabelecimento</label>
+          <input type="file" id="inputBanner" accept="image/*" />
+        </div>
+        <div class="modal-footer">
+          <button
+            class="secondary-btn"
+            onclick="fecharModal(null, 'modalBanner')"
+          >
+            Cancelar
+          </button>
+          <button class="primary-btn" onclick="enviarBanner()">
+            Enviar Banner
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="modalDados"
+      class="modal"
+      onclick="fecharModal(event, 'modalDados')"
+    >
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="modal-header">
+          <div>
+            <h3>Dados da loja</h3>
+            <p>Atualize o nome, contato e chaves de pagamento da loja.</p>
+          </div>
+          <button class="close-modal" onclick="fecharModal(null, 'modalDados')">
+            ×
+          </button>
+        </div>
+        <div class="modal-body">
+          <label for="inputNomeEstabelecimento">Nome do estabelecimento</label>
+          <input
+            type="text"
+            id="inputNomeEstabelecimento"
+            placeholder="Nome da sua loja"
+            maxlength="100"
+            autocomplete="organization"
+            required
+          />
+          <label>Telefone (WhatsApp)</label>
+          <input type="text" id="inputTelefone" placeholder="44999999999" />
+          <label style="margin-top: 12px">Mercado Pago - Access Token</label>
+          <input
+            type="text"
+            id="inputMercadoPagoToken"
+            placeholder="Deixe em branco para manter o token atual"
+            autocomplete="off"
+          />
+          <p
+            id="statusMercadoPagoToken"
+            style="font-size: 12px; margin-top: 4px"
+          ></p>
+          <p style="font-size: 12px; color: #666; margin-top: 6px">
+            Como gerar: acesse o painel do Mercado Pago → Credenciais → Access
+            Token.
+          </p>
+          <label style="margin-top: 12px"
+            >Mercado Pago - Chave Secreta (Webhook)</label
+          >
+          <input
+            type="password"
+            id="inputMercadoPagoSecretKey"
+            placeholder="Deixe em branco para manter a chave atual"
+            autocomplete="new-password"
+          />
+          <p
+            id="statusMercadoPagoSecretKey"
+            style="font-size: 12px; margin-top: 4px"
+          ></p>
+          <p style="font-size: 12px; color: #666; margin-top: 6px">
+            Como gerar: painel do Mercado Pago → Webhooks → Chave secreta.
+            Necessária para validar as notificações de pagamento da sua loja.
+          </p>
+          <label style="margin-top: 18px"
+            >URL do Webhook de Pagamentos dos Pedidos</label
+          >
+          <div style="display: flex; gap: 8px; align-items: stretch">
+            <input
+              type="url"
+              id="inputWebhookPedidosUrl"
+              readonly
+              aria-label="URL do webhook de pagamentos dos pedidos"
+            />
+            <button
+              type="button"
+              class="secondary-btn"
+              onclick="copiarWebhookPedidos()"
+            >
+              Copiar
+            </button>
+          </div>
+          <p style="font-size: 12px; color: #666; margin-top: 6px">
+            Configure esta URL no Mercado Pago no campo "URL de produção" para
+            receber pagamentos dos pedidos desta loja.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button
+            class="secondary-btn"
+            onclick="fecharModal(null, 'modalDados')"
+          >
+            Cancelar
+          </button>
+          <button class="primary-btn" onclick="salvarDados()">
+            Salvar dados
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="modalLinkDaLoja"
+      class="modal"
+      onclick="fecharModal(event, 'modalLinkDaLoja')"
+    >
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="modal-header">
+          <div>
+            <h3>Link da loja</h3>
+            <p>Copie o link de acesso à página da sua loja.</p>
+          </div>
+          <button
+            class="close-modal"
+            onclick="fecharModal(null, 'modalLinkDaLoja')"
+          >
+            ×
+          </button>
+        </div>
+        <div class="modal-body">
+          <label>Link da loja</label>
+          <input id="urlLoja" readonly placeholder="Carregando..." />
+        </div>
+        <div class="modal-footer">
+          <button
+            class="secondary-btn"
+            onclick="fecharModal(null, 'modalLinkDaLoja')"
+          >
+            Fechar
+          </button>
+          <button class="primary-btn" onclick="copiarURL()">Copiar link</button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="modalAssinatura"
+      class="modal"
+      onclick="fecharModalAssinatura(event)"
+    >
+      <div
+        class="modal-content assinatura-modal-content"
+        onclick="event.stopPropagation()"
+      >
+        <div class="modal-header assinatura-modal-header">
+          <div class="assinatura-titulo">
+            <span class="assinatura-icone" aria-hidden="true">↻</span>
+            <div>
+              <h3>Renove sua assinatura</h3>
+              <p>Continue usando todos os recursos do Vendly.</p>
+            </div>
+          </div>
+          <button class="close-modal" onclick="fecharModalAssinatura()">
+            <span aria-hidden="true">×</span>
+            <span class="sr-only">Fechar</span>
+          </button>
+        </div>
+        <div class="modal-body assinatura-modal-body">
+          <div
+            id="assinaturaResumo"
+            class="assinatura-resumo"
+            aria-live="polite"
+          >
+            <strong id="assinaturaEstado">Consultando assinatura...</strong>
+            <span id="assinaturaDetalhes"></span>
+          </div>
+
+          <div class="assinatura-plano-atual">
+            <span>Seu plano</span>
+            <strong id="assinaturaPlanoAtual">—</strong>
+          </div>
+
+          <section
+            id="assinaturaOpcoesCarregando"
+            class="assinatura-carregando"
+            role="status"
+          >
+            <span class="assinatura-skeleton" aria-hidden="true"></span>
+            <span>Carregando valores do plano...</span>
+          </section>
+          <div
+            id="assinaturaOpcoesErro"
+            class="assinatura-opcoes-erro"
+            role="alert"
+            hidden
+          >
+            <p>
+              Não foi possível carregar os valores da assinatura. Tente
+              novamente.
+            </p>
+            <button
+              class="secondary-btn"
+              type="button"
+              onclick="carregarOpcoesPagamentoAssinatura()"
+            >
+              Tentar novamente
+            </button>
+          </div>
+
+          <div id="assinaturaOpcoesConteudo" class="assinatura-conteudo" hidden>
+            <div class="assinatura-coluna-opcoes">
+            <div class="assinatura-selecao-titulo">Escolha como deseja pagar</div>
+            <div
+              class="assinatura-periodicidades"
+              role="radiogroup"
+              aria-label="Periodicidade da assinatura"
+            >
+              <button
+                id="assinaturaOpcaoMensal"
+                class="assinatura-opcao"
+                type="button"
+                role="radio"
+                aria-checked="false"
+                onclick="selecionarPeriodicidadeAssinatura('mensal')"
+              >
+                <span class="assinatura-opcao-cabecalho">
+                  <span class="assinatura-opcao-radio" aria-hidden="true"></span>
+                  <strong>Mensal</strong>
+                </span>
+                <strong id="assinaturaPrecoMensal" class="assinatura-opcao-preco">
+                  —
+                </strong>
+                <span>por mês</span>
+                <span
+                  id="assinaturaDuracaoMensal"
+                  class="assinatura-opcao-rodape"
+                ></span>
+              </button>
+              <button
+                id="assinaturaOpcaoAnual"
+                class="assinatura-opcao assinatura-opcao-anual"
+                type="button"
+                role="radio"
+                aria-checked="false"
+                onclick="selecionarPeriodicidadeAssinatura('anual')"
+              >
+                <span class="assinatura-opcao-cabecalho">
+                  <span class="assinatura-opcao-radio" aria-hidden="true"></span>
+                  <strong>Anual</strong>
+                  <span
+                    id="assinaturaDescontoBadge"
+                    class="assinatura-selo-desconto"
+                  ></span>
+                </span>
+                <span
+                  id="assinaturaPrecoAnualOriginal"
+                  class="assinatura-preco-riscado"
+                ></span>
+                <strong id="assinaturaPrecoAnual" class="assinatura-opcao-preco">
+                  —
+                </strong>
+                <span>por ano</span>
+                <span
+                  id="assinaturaEconomiaAnual"
+                  class="assinatura-economia-anual"
+                ></span>
+                <span
+                  id="assinaturaEquivalenteMensal"
+                  class="assinatura-opcao-rodape"
+                ></span>
+              </button>
+            </div>
+            </div>
+
+            <div class="assinatura-coluna-resumo">
+            <section class="assinatura-resumo-valores" aria-label="Resumo da cobrança">
+              <div class="assinatura-resumo-cabecalho">
+                <div>
+                  <strong>Resumo</strong>
+                  <span>Confira os detalhes da sua renovação.</span>
+                </div>
+                <span>Valores oficiais do Vendly</span>
+              </div>
+              <dl id="assinaturaResumoLista"></dl>
+            </section>
+
+            <button
+              class="primary-btn"
+              id="btnCriarPixAssinatura"
+              onclick="criarPixAssinatura()"
+              disabled
+            >
+              Carregando valores...
+            </button>
+            <p class="assinatura-seguranca">
+              Pagamento seguro via Pix · Liberação automática após confirmação.
+            </p>
+            </div>
+          </div>
+
+          <div id="assinaturaPixResultado" hidden>
+            <div id="assinaturaPixDetalhes" class="assinatura-pix-detalhes"></div>
+            <img
+              id="assinaturaQrCode"
+              alt="QR Code do pagamento"
+              class="assinatura-qr-code"
+              hidden
+            />
+            <label>Pix copia e cola</label>
+            <textarea id="assinaturaCopiaCola" readonly rows="4"></textarea>
+            <button class="secondary-btn" onclick="copiarPixAssinatura()">
+              Copiar Pix
+            </button>
+            <p id="assinaturaStatus">Aguardando pagamento...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="loading" class="loading-overlay active">
+      <div class="loading-bars" role="status" aria-label="Carregando painel">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.8.3/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <script type="module" src="../js/admin.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("../service-worker.js")
+            .then(() => {
+              console.log("Vendly Commerce: Service Worker registrado.");
+            })
+            .catch((error) => {
+              console.error(
+                "Vendly Commerce: erro ao registrar Service Worker:",
+                error,
+              );
+            });
+        });
+      }
+    </script>
+  </body>
+</html>

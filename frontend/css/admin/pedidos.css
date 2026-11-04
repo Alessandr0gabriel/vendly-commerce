@@ -1,0 +1,72 @@
+﻿/* PEDIDOS */
+.pedido-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pedido-card.arquivado {
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  background: rgba(99, 102, 241, 0.05);
+}
+
+.pedido-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pedido-info {
+  font-size: 0.9rem;
+  color: rgba(238, 242, 255, 0.75);
+  word-break: break-word;
+}
+
+.troco-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.78rem;
+  width: fit-content;
+}
+
+.troco-com {
+  background: rgba(255, 193, 7, 0.15);
+  color: #ffc107;
+  border: 1px solid rgba(255, 193, 7, 0.35);
+}
+
+.troco-sem {
+  background: rgba(148, 163, 184, 0.12);
+  color: rgba(238, 242, 255, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.pedido-acoes {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.pedido-acoes button {
+  flex: 1;
+  min-width: 120px;
+}
+
+.status-arquivado {
+  background: rgba(99, 102, 241, 0.15);
+  color: #818cf8;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}

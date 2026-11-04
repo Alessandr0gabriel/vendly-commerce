@@ -1,0 +1,87 @@
+﻿/* CARDS */
+.panel-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.18);
+  padding: 26px;
+  display: grid;
+  gap: 18px;
+}
+
+.panel-loading-overlay {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit;
+  background: rgba(15, 23, 42, 0.62);
+  z-index: 2;
+}
+
+.panel-loading-overlay.active {
+  display: flex;
+}
+
+.full-card {
+  min-height: 520px;
+}
+
+#panelDefaultContent.hidden {
+  display: none;
+}
+
+.panel-card > .panel-form-view {
+  position: static;
+  inset: auto;
+  display: none;
+  align-items: initial;
+  justify-content: initial;
+  padding: 0;
+  background: transparent;
+  z-index: auto;
+}
+
+.panel-card > .panel-form-view.active {
+  display: block;
+}
+
+.panel-card > .panel-form-view .modal-content {
+  width: 100%;
+  max-height: none;
+  overflow: visible;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.card-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.card-head h2 {
+  margin: 0 0 8px;
+}
+
+.card-head p,
+.panel-card p {
+  margin: 0;
+  color: rgba(238, 242, 255, 0.72);
+}
+
+.empty-state {
+  padding: 24px;
+  text-align: center;
+  color: rgba(238, 242, 255, 0.72);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(238, 242, 255, 0.18);
+  border-radius: 20px;
+}
